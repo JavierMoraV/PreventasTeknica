@@ -1,0 +1,118 @@
+{% extends 'home.html' %} 
+{% block content %}
+
+
+<div class="row w-100">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#categoria1" aria-expanded="true" aria-controls="categoria1">
+            Agregar Informacion de Preventa
+          </button>
+        </h5>
+      </div>
+      <div id="categoria1" class="collapse">
+        <div class="card-body">
+          <!-- Primer grupo de campos del formulario -->
+  
+            <div class="form-group row">
+              <label for="exampleFormControlTextarea1" class="col-2 text-left">Alcances:</label>
+              <textarea class="form-control col-9 ml-5" id="alcances" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+              <label for="exampleFormControlTextarea1" class="col-2 text-left">Entregables:</label>
+              <textarea class="form-control col-9 ml-5" id="entregables" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+              <label for="exampleFormControlTextarea1" class="col-2 text-left">Info Requerida del mandante:</label>
+              <textarea class="form-control col-9 ml-5" id="infoMandante" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+              <label for="exampleFormControlTextarea1" class="col-2 text-left">Limitaciones</label>
+              <textarea class="form-control col-9 ml-5" id="limitaciones" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+              <label for="exampleFormControlTextarea1" class="col-2 text-left">Exclusiones</label>
+              <textarea class="form-control col-9 ml-5" id="exclusiones" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+              <label for="exampleFormControlTextarea1" class="col-2 text-left">Plazos de Entrega</label>
+              <textarea class="form-control col-9 ml-5" id="exclusiones" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-3 col-form-label  text-left">Costos de Ingenieria</label>
+              <div class="col-4">
+                <input type="text" class="form-control" id="solicitante" placeholder="$" onlynumber>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card mt-3">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#categoria2" aria-expanded="false" aria-controls="categoria2">
+            Costeo Horas Hombre
+          </button>
+        </h5>
+      </div>
+      <div id="categoria2" class="collapse">
+        <div class="card-body">
+          <!-- Segundo grupo de campos del formulario -->
+          <form>
+            <div class="form-group">
+              <label for="campo3">Campo 3:</label>
+              <input type="text" class="form-control" id="campo3" placeholder="Ingrese Campo 3">
+            </div>
+            <div class="form-group">
+              <label for="campo4">Campo 4:</label>
+              <input type="text" class="form-control" id="campo4" placeholder="Ingrese Campo 4">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card mt-3">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#categoria3" aria-expanded="false" aria-controls="categoria3">
+            Valorizacion
+          </button>
+        </h5>
+      </div>
+      <div id="categoria3" class="collapse">
+        <div class="card-body">
+          <!-- Tercer grupo de campos del formulario -->
+          <form>
+            <div class="form-group">
+              <label for="campo5">Campo 5:</label>
+              <input type="text" class="form-control" id="campo5" placeholder="Ingrese Campo 5">
+            </div>
+            <div class="form-group">
+              <label for="campo6">Campo 6:</label>
+              <input type="text" class="form-control" id="campo6" placeholder="Ingrese Campo 6">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Botón para enviar el formulario -->
+    <button type="submit" class="btn btn-primary mt-3">Enviar Formulario</button>
+    
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+{% endblock %}

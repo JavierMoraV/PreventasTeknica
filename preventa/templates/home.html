@@ -1,0 +1,184 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="{% static 'preventa/css/home.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <title>Preventas</title>
+  </head>
+  <body>
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Logo</a>
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="">Preventas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'addInfo'%}"
+            >Ingresar Detalles de Preventas</a
+          >
+        </li>
+        
+      </ul>
+
+      <!-- Aquí se encuentra el último elemento alineado a la derecha -->
+      <ul class="navbar-nav">
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+        >
+          Ingresar Preventa
+        </button>
+      </ul>
+    </nav>
+    <!--navbar-->
+
+    <!--formulario ingreso de preventa Modal -->
+
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">
+              Ingreso de Preventa
+            </h5>
+          </div>
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="cliente" class="col-2 col-form-label text-left"
+                  >Cliente</label
+                >
+                <div class="col-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cliente"
+                    name="cliente"
+                    placeholder="Nombre Cliente"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="proyecto" class="col-2 col-form-label text-left"
+                  >Proyecto</label
+                >
+                <div class="col-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="proyecto"
+                    name="proyecto"
+                    placeholder="Nombre de Proyecto"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="solicitante" class="col-2 col-form-label text-left"
+                  >Solicitante</label
+                >
+                <div class="col-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="solicitante"
+                    name="solicitante"
+                    placeholder="Nombre Solicitante"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="fecha" class="col-2 col-form-label text-left"
+                  >Fecha</label
+                >
+                <div class="col-4">
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="fecha"
+                    name="fecha"
+                    placeholder=""
+                  />
+                </div>
+                <label for="correlativo" class="col-2 col-form-label"
+                  >Preventa</label
+                >
+                <div class="col-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="correlativo"
+                    name="correlativo"
+                    placeholder="Nro Preventa"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cerrar
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Guardar cambios
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--formulario ingreso de preventa Modal -->
+
+    <div class="container">
+      {% block content %} Tablas Preventas {% endblock %}
+    </div>
+
+    <footer>
+      <p>&copy; 2024 - Todos los derechos reservados</p>
+    </footer>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

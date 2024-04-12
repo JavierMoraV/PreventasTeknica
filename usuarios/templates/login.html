@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - Empresa Eléctrica</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 100px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .microsoft-login {
+            margin-top: 20px;
+        }
+        .microsoft-login img {
+            width: 100%;
+            max-width: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'preventa'%}">preventas</a>
+    <div class="container">
+        <div class="login-container">
+            <h1 class="text-center">Iniciar Sesión</h1>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nombre de usuario" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </form>
+            <div class="microsoft-login text-center">
+                <img src="https://docs.microsoft.com/en-us/azure/active-directory/develop/media/active-directory-branding-guidelines/sign-in-with-microsoft-light.png" alt="Iniciar sesión con Microsoft">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
