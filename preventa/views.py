@@ -1,5 +1,6 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import ProyectoForm
+from .models import Preventa
 
 
 # Create your views here.
@@ -11,16 +12,23 @@ def addInfo(request):
     return render(request, 'addInfo.html', {})
 
 
-# views.py
-
 def ingresar_proyecto(request):
-    print('probando')
     if request.method == 'POST':
-        form = ProyectoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home.html')  # Aquí debes especificar la ruta a la que quieres redirigir después de guardar el formulario
-    else:
-        form = ProyectoForm()
-    
-    return render(request, 'home.html', {'form': form})
+        cliente = request.POST.get('cliente')
+        proyecto = request.POST.get('proyecto')
+        solicitante = request.POST.get('solicitante')
+        fecha = request.POST.get('fecha')
+        correlativo = request.POST.get('correlativo')
+        
+        proyecto_nuevo = Preventa(
+            cliente=cliente,
+            proyecto=proyecto,
+            solicitante=solicitante,
+            fecha=fecha,
+            correlativo=correlativo
+        )
+        proyecto_nuevo.save()
+        
+        return redirect('preventa')
+
+    return render(request, 'preventa')

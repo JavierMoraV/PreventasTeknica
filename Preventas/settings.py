@@ -131,8 +131,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'preventa/static'),
-    os.path.join(BASE_DIR, 'usuario/static'),
+    os.path.join(BASE_DIR, 'preventa/static/'),
+    os.path.join(BASE_DIR, 'usuarios/static/'),
     # Agrega aquí las rutas a las carpetas estáticas de tus otras aplicaciones
 ]
 

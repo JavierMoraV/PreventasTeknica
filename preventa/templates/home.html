@@ -36,7 +36,6 @@
             >Ingresar Detalles de Preventas</a
           >
         </li>
-        
       </ul>
 
       <!-- Aquí se encuentra el último elemento alineado a la derecha -->
@@ -46,7 +45,19 @@
           type="button"
           class="btn btn-primary"
           data-toggle="modal"
-          data-target="#exampleModalCenter"
+          data-target="#ingresarCliente"
+        >
+          Ingresar Cliente
+        </button>
+      </ul>
+
+      <ul class="navbar-nav">
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#ingresarPreventas"
         >
           Ingresar Preventa
         </button>
@@ -54,27 +65,25 @@
     </nav>
     <!--navbar-->
 
-    <!--formulario ingreso de preventa Modal -->
-
+    <!--formulario ingreso de preventa (Modal) -->
     <div
       class="modal fade"
-      id="exampleModalCenter"
+      id="ingresarPreventas"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
+      aria-labelledby="ingresarPreventas"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">
+            <h5 class="modal-title" id="ingresarPreventas">
               Ingreso de Preventa
             </h5>
           </div>
 
-          <form action="" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
+          <form action="{% url 'ingresar_proyecto' %}" method="POST">
+            {% csrf_token %} {{ form.as_p }}
             <div class="modal-body">
               <div class="form-group row">
                 <label for="cliente" class="col-2 col-form-label text-left"
@@ -165,8 +174,59 @@
         </div>
       </div>
     </div>
+    <!--End formulario ingreso de preventa (Modal) -->
 
-    <!--formulario ingreso de preventa Modal -->
+    <!--formulario ingreso de cliente (Modal) -->
+    <div
+      class="modal fade"
+      id="ingresarCliente"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="ingresarCliente"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ingresarCliente">Ingreso de Cliente</h5>
+          </div>
+
+          <form action="#" method="POST">
+            {% csrf_token %} {{ form.as_p }}
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="cliente" class="col-12 col-form-label text-left"
+                  >Nombre de Cliente</label
+                >
+                <div class="col-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cliente"
+                    name="cliente"
+                    placeholder="Nombre Cliente"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cerrar
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Guardar cambios
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--End formulario ingreso de cliente  (Modal) -->
 
     <div class="container">
       {% block content %} Tablas Preventas {% endblock %}
@@ -175,8 +235,6 @@
     <footer>
       <p>&copy; 2024 - Todos los derechos reservados</p>
     </footer>
-
-    
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
