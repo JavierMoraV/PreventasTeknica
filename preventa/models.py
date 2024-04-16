@@ -9,7 +9,4 @@ class Proyecto(models.Model):
 
     def __str__(self):
         return self.cliente  # O cualquier campo que desees mostrar en la representación del objeto
-    
-
-
 
