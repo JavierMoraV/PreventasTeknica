@@ -1,18 +1,18 @@
 from django.db import models
 
-from django.db import models
-
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100, null=False)
-
+    
+    
 class Preventa(models.Model):
     id = models.AutoField(primary_key=True)
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
-    nombre = models.CharField(max_length=100, null=False)
-    solicitante = models.CharField(max_length=100, null=False)
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
+    nombre_proyecto = models.CharField(max_length=100, null=False)
+    nombre_solicitante = models.CharField(max_length=100, null=False)
     fecha = models.DateField(null=False)
-    correlativo = models.CharField(max_length=50, null=False)
+    correlativo = models.IntegerField(null=False)
+    
 
 class Usuario(models.Model):
     id = models.AutoField(primary_key=True)
