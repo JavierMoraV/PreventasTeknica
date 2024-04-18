@@ -10,4 +10,5 @@ urlpatterns = [
     path('', redirect_to_usuarios),
     path('preventa/', home_preventa, name='preventa' ),
     path('preventa/', include('preventa.urls')),
+    path('usuarios/', include('usuarios.urls')),
 ]

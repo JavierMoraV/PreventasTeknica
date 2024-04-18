@@ -3,16 +3,18 @@ from django.db import models
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100, null=False)
-    
+    def __str__(self):
+        return self.nombre
     
 class Preventa(models.Model):
     id = models.AutoField(primary_key=True)
-    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
     nombre_proyecto = models.CharField(max_length=100, null=False)
     nombre_solicitante = models.CharField(max_length=100, null=False)
     fecha = models.DateField(null=False)
     correlativo = models.IntegerField(null=False)
-    
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
+    def __str__(self):
+        return self.nombre_proyecto
 
 class Usuario(models.Model):
     id = models.AutoField(primary_key=True)

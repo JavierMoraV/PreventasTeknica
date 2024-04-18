@@ -1,6 +1,12 @@
 {% extends 'home.html' %} 
 {% block content %}
 
+<h1>Detalles de la preventa {{ preventa.id }}</h1>
+<p>Nombre del proyecto: {{ preventa.nombre_proyecto }}</p>
+<p>Nombre del solicitante: {{ preventa.nombre_solicitante }}</p>
+<p>Fecha: {{ preventa.fecha }}</p>
+<p>Nro Correlativo: {{ preventa.correlativo }}</p>
+<p>Cliente: {{ preventa.id_cliente.nombre }}</p>
 
 <div class="row w-100">
   <div class="col-12">

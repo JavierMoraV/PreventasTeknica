@@ -31,11 +31,6 @@
         <li class="nav-item">
           <a class="nav-link" href="">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'addInfo'%}"
-            >Ingresar Detalles de Preventas</a
-          >
-        </li>
       </ul>
 
       <!-- Aquí se encuentra el último elemento alineado a la derecha -->
@@ -82,10 +77,8 @@
             </h5>
           </div>
 
-          <form action="{% url 'ingresar_proyecto' %}" method="POST">
+          <form method="POST">
             {% csrf_token %} {{ PreventaForm.as_p }}
-            
-
             <div class="modal-footer">
               <button
                 type="button"
@@ -94,7 +87,11 @@
               >
                 Cerrar
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                name="submit_preventa"
+              >
                 Guardar cambios
               </button>
             </div>
@@ -118,11 +115,9 @@
           <div class="modal-header">
             <h5 class="modal-title" id="ingresarCliente">Ingreso de Cliente</h5>
           </div>
-
           <form method="POST">
-            {% csrf_token %} 
-            {{ ClienteForm.as_p }}
-            <button type="submit" class="btn btn-primary">
+            {% csrf_token %} {{ ClienteForm.as_p }}
+            <button type="submit" class="btn btn-primary" name="submit_cliente">
               Guardar cambios
             </button>
 
@@ -136,18 +131,49 @@
               </button>
             </div>
           </form>
-
-          
         </div>
       </div>
     </div>
     <!--End formulario ingreso de cliente  (Modal) -->
 
-    <div class="container">
-      {% block content %} Tablas Preventas {% endblock %}
-    </div>
+    <div class="container-fluid">
+      {% block content %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID PREVENTA</th>
+            <th>NOMBRE PROYECTO</th>
+            <th>NOMBRE SOLICITANTE</th>
+            <th>FECHA</th>
+            <th>CORRELATIVO</th>
+            <th>CLIENTE</th>
+            <th>AGREGAR INFORMACION</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for preventa in LoadPreventas %}
+          <tr>
+            <td>{{ preventa.id }}</td>
+            <td>{{ preventa.nombre_proyecto}}</td>
+            <td>{{ preventa.nombre_solicitante}}</td>
+            <td>{{ preventa.fecha }}</td>
+            <td>{{ preventa.correlativo }}</td>
+            <td>{{ preventa.id_cliente.nombre }}</td>
+            <td>
+              <a
+                href="{% url 'addInfo' preventa.id%}"
+                type="button"
+                class="btn btn-info"
+                >ACCIONES</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 
-    
+      {% endblock %}
+    </div>
 
     <footer>
       <p>&copy; 2024 - Todos los derechos reservados</p>

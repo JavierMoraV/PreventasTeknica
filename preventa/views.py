@@ -1,46 +1,34 @@
-from django.shortcuts import render, redirect
-from .models import Preventa
+from django.shortcuts import render
 from .forms import ClienteForm, PreventaForm
+from .models import Preventa
 
 # Create your views here.
 def redirect_to_preventa(request):
     return render(request, 'home.html', {})
 
 
-def addInfo(request):
-    return render(request, 'addInfo.html', {})
-
-
-def ingresar_proyecto(request):
-    if request.method == 'POST':
-        cliente = request.POST.get('cliente')
-        proyecto = request.POST.get('proyecto')
-        solicitante = request.POST.get('solicitante')
-        fecha = request.POST.get('fecha')
-        correlativo = request.POST.get('correlativo')
-        
-        proyecto_nuevo = Preventa(
-            cliente=cliente,
-            proyecto=proyecto,
-            solicitante=solicitante,
-            fecha=fecha,
-            correlativo=correlativo
-        )
-        proyecto_nuevo.save()
-        
-        return redirect('preventa')
-    return render(request, 'preventa')
+def addInfo(request, preventa_id):
+    preventa = Preventa.objects.get(pk=preventa_id)
+    print(preventa)
+    return render(request, 'addInfo.html', {'preventa': preventa})
 
 
 def home_preventa(request):
     if request.method == 'POST':
-        formCliente = ClienteForm(request.POST)
-        formPreventa = PreventaForm(request.POST)
-        if formCliente.is_valid() and formPreventa.is_valid():
-            formCliente.save()
-            formPreventa.save()
-    else:
-        formCliente = ClienteForm()
-        formPreventa = PreventaForm()
-    return render(request, 'home.html', {'ClienteForm': formCliente, 'PreventaForm': formPreventa})
+        if 'submit_cliente' in request.POST: 
+            form_cliente = ClienteForm(request.POST)
+            if form_cliente.is_valid():
+                form_cliente.save()
+        elif 'submit_preventa' in request.POST:
+            form_preventa = PreventaForm(request.POST)
+            if form_preventa.is_valid():
+                form_preventa.save()
+    load_preventas = Preventa.objects.all()
+    form_cliente = ClienteForm()
+    form_preventa = PreventaForm()
+    return render(request, 'home.html', {'ClienteForm': form_cliente, 
+                                         'PreventaForm': form_preventa,
+                                         'LoadPreventas': load_preventas})
+   
+
 
