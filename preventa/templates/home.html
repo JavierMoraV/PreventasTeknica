@@ -26,10 +26,24 @@
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="">Preventas</a>
+          <a class="nav-link" href="{%url 'preventa'%}">Teknica</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">Login</a>
+
+        <li class="nav-item text-danger">
+          {% if user.is_authenticated %}
+          <p>
+            Bienvenido, {{ user.username }}. Has iniciado sesión correctamente.
+          </p>
+        </li>
+        <li class="nav-item text-danger bg-dark">
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesión</button>
+          </form>
+          {% else %}
+          <p>No has iniciado sesión.</p>
+          <a href="{% url 'login' %}">Iniciar sesión</a>
+          {% endif %}
         </li>
       </ul>
 
@@ -57,6 +71,18 @@
           Ingresar Preventa
         </button>
       </ul>
+
+      <ul class="navbar-nav">
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#ingresarItem"
+        >
+          Ingresar item
+        </button>
+      </ul>
     </nav>
     <!--navbar-->
 
@@ -67,8 +93,8 @@
       tabindex="-1"
       role="dialog"
       aria-labelledby="ingresarPreventas"
-      aria-hidden="true"
-    >
+      aria-hidden="true">
+
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -108,8 +134,8 @@
       tabindex="-1"
       role="dialog"
       aria-labelledby="ingresarCliente"
-      aria-hidden="true"
-    >
+      aria-hidden="true">
+
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -135,6 +161,41 @@
       </div>
     </div>
     <!--End formulario ingreso de cliente  (Modal) -->
+
+    <!--formulario item  (Modal) -->
+    <div
+      class="modal fade"
+      id="ingresarItem"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="ingresarItem"
+      aria-hidden="true">
+      
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ingresarCliente">Agregar Item</h5>
+          </div>
+          <form method="POST">
+            {% csrf_token %} {{ ItemForm.as_p }}
+            <button type="submit" class="btn btn-primary" name="submit_item">
+              Guardar cambios
+            </button>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cerrar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--End formulario item de  (Modal) -->
 
     <div class="container-fluid">
       {% block content %}

@@ -1,8 +1,10 @@
 from django.shortcuts import render
-#from django.shortcuts import redirect
+from django.shortcuts import redirect
 
 
-# Create your views here.
 def redirect_to_usuarios(request):
-    return render(request, 'login.html', {})
+    return redirect('login')
 
+
+def logout(request):
+    return render(request, 'registration/logout.html')
